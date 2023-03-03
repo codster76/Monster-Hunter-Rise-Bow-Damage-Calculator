@@ -1,0 +1,20 @@
+For some reason, with the lowest-level mizutsune bow, its charge level 1's damage is inaccurate against the training dummy's head.
+Conditions:
+Raw: 120
+Element: 11
+Charge Level: 1
+    Raw MV: 9
+    Raw Charge Level: 0.65
+    Element Charge Level: 0.8
+Raw Hitzone: 100
+Element Hitzone: 30
+No coatings
+Normal distance
+No additional modifiers
+
+Calculated Damage: 10
+Actual Damage: 9
+
+I have confirmed that the error is in the elemental damage. I used dragonheart to cancel my element and the calculations without the element are correct.
+
+Rounding the total element down does not work because it invalidates other calculations.
