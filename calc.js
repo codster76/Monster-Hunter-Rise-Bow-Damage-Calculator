@@ -1,30 +1,30 @@
 // Stats
-var baseRaw = 320;
-var rawMultiplier = 1;
-var flatAttack = 8 + 20 + 18 + 8;
-var totalRawBuffs = 1;
+var baseRaw = 345;
+var rawMultiplier = 1.1;
+var flatAttack = 8 + 10;
+var totalRawBuffs = 1 * 1.05;
 var totalRaw = Math.floor(((baseRaw * rawMultiplier) + flatAttack) * totalRawBuffs + 0.1);
 console.log("Total Raw: ".concat(totalRaw));
-var baseElement = 45;
-var elementMultiplier = 1.2 * 1.2 * 1.2;
-var flatElement = 8 + 6;
+var baseElement = 68;
+var elementMultiplier = 1;
+var flatElement = 0;
 var totalElement = Math.floor((baseElement * elementMultiplier) + flatElement + 0.1);
 console.log("Total Element: ".concat(totalElement));
 // Damage Calculations
 var criticalRange = 1; // Close | Normal | Far | Supercritical
-var critDamage = 1.4; // Negative Crit | No Crit | Normal Crit | CB1 | CB2 | CB3
-var coating = 1.3; // No Coating | Close Range | Bladescale Hone | Power
-var rawChargeLevel = 1.35;
-var motionValue = 0.1;
+var critDamage = 1; // Negative Crit | No Crit | Normal Crit | CB1 | CB2 | CB3
+var coating = 1; // No Coating | Close Range | Bladescale Hone | Power
+var rawChargeLevel = 1.25;
+var motionValue = 0.09;
 var rawHitZone = 0.6;
 var antiSpecies = 1; // Still need to work this one out
-var shotTypeUp = 1.2;
+var shotTypeUp = 1;
 var rawDamage = Math.round(totalRaw * criticalRange * critDamage * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
 console.log("Raw Damage: ".concat(rawDamage));
-var critElement = 1.15;
-var elementChargeLevel = 1.2; // Based on charge level
+var critElement = 1;
+var elementChargeLevel = 1.1; // Based on charge level
 var elementHitZone = 0.2;
-var elementExploit = 1.1; // Elembane and Element Exploit are additive
+var elementExploit = 1; // Elembane and Element Exploit are additive
 var elementDamage = monsterHunterRound(totalElement * critElement * elementChargeLevel * elementHitZone * elementExploit);
 console.log("Elemental Damage: ".concat(elementDamage));
 var totalDamage = rawDamage + elementDamage;

@@ -1,37 +1,38 @@
 // Stats
-const baseRaw = 320;
-const rawMultiplier = 1;
-const flatAttack = 8 + 20 + 18 + 8;
-const totalRawBuffs = 1;
+const baseRaw = 345;
+const rawMultiplier = 1.1;
+const flatAttack = 8 + 10;
+const totalRawBuffs = 1 * 1.05; // Hunting horn buffs to here
 const totalRaw = Math.floor(((baseRaw * rawMultiplier) + flatAttack) * totalRawBuffs + 0.1);
 
 console.log(`Total Raw: ${totalRaw}`);
 
-const baseElement = 45;
-const elementMultiplier = 1.2 * 1.2 * 1.2;
-const flatElement = 8 + 6;
-const totalElement = Math.floor((baseElement * elementMultiplier) + flatElement + 0.1);
+const baseElement = 68;
+const elementMultiplier = 1;
+const flatElement = 0;
+const totalElementBuffs = 1; // Hunting horn buffs go here
+const totalElement = Math.floor(((baseElement * elementMultiplier) + flatElement) * totalElementBuffs + 0.1);
 
 console.log(`Total Element: ${totalElement}`);
 
 // Damage Calculations
 const criticalRange: 0.8 | 1 | 0.2 | 1.15 = 1; // Close | Normal | Far | Supercritical
-const critDamage: 0.75 | 1 | 1.25 | 1.3 | 1.35 | 1.4 = 1.4; // Negative Crit | No Crit | Normal Crit | CB1 | CB2 | CB3
-const coating: 1 | 1.2 | 1.3 | 1.35 = 1.3; // No Coating | Close Range | Bladescale Hone | Power
-const rawChargeLevel: 0.65 | 1 | 1.25 | 1.35 = 1.35;
-const motionValue = 0.1;
+const critDamage: 0.75 | 1 | 1.25 | 1.3 | 1.35 | 1.4 = 1; // Negative Crit | No Crit | Normal Crit | CB1 | CB2 | CB3
+const coating: 1 | 1.2 | 1.3 | 1.35 = 1; // No Coating | Close Range | Bladescale Hone | Power
+const rawChargeLevel: 0.65 | 1 | 1.25 | 1.35 = 1.25;
+const motionValue = 0.09;
 const rawHitZone = 0.6;
 const antiSpecies = 1; // Still need to work this one out
-const shotTypeUp: 1 | 1.05 | 1.1 | 1.2 = 1.2;
+const shotTypeUp: 1 | 1.05 | 1.1 | 1.2 = 1;
 
 const rawDamage = Math.round(totalRaw * criticalRange * critDamage * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
 
 console.log(`Raw Damage: ${rawDamage}`);
 
-const critElement: 1 | 1.05 | 1.1 | 1.15 = 1.15;
-const elementChargeLevel: 0.8 | 1 | 1.1 | 1.2 = 1.2; // Based on charge level
+const critElement: 1 | 1.05 | 1.1 | 1.15 = 1;
+const elementChargeLevel: 0.8 | 1 | 1.1 | 1.2 = 1.1; // Based on charge level
 const elementHitZone = 0.2;
-const elementExploit = 1.1; // Elembane and Element Exploit are additive
+const elementExploit = 1; // Elembane and Element Exploit are additive
 let elementDamage = monsterHunterRound(totalElement * critElement * elementChargeLevel * elementHitZone * elementExploit);
 
 console.log(`Elemental Damage: ${elementDamage}`);
