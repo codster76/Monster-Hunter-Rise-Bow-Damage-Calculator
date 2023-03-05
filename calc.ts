@@ -1,44 +1,53 @@
 // Stats
-const baseRaw = 345;
-const rawMultiplier = 1.1;
-const flatAttack = 8 + 10;
-const totalRawBuffs = 1 * 1.05; // Hunting horn buffs to here
+const baseRaw = 320;
+const rawMultiplier = 1;
+const flatAttack = 8 + 20 + 18 + 9;
+const totalRawBuffs = 1; // Hunting horn buffs to here
 const totalRaw = Math.floor(((baseRaw * rawMultiplier) + flatAttack) * totalRawBuffs + 0.1);
 
-console.log(`Total Raw: ${totalRaw}`);
-
-const baseElement = 68;
-const elementMultiplier = 1;
-const flatElement = 0;
+const baseElement = 45;
+const elementMultiplier = 1.2 * 1.2 * 1.2 * 1.1;
+const flatElement = 4 + 4 + 8;
 const totalElementBuffs = 1; // Hunting horn buffs go here
 const totalElement = Math.floor(((baseElement * elementMultiplier) + flatElement) * totalElementBuffs + 0.1);
 
-console.log(`Total Element: ${totalElement}`);
+let affinity = 40 + 15 + 20 + 20;
+affinity = Math.min(1, affinity/100);
 
 // Damage Calculations
 const criticalRange: 0.8 | 1 | 0.2 | 1.15 = 1; // Close | Normal | Far | Supercritical
-const critDamage: 0.75 | 1 | 1.25 | 1.3 | 1.35 | 1.4 = 1; // Negative Crit | No Crit | Normal Crit | CB1 | CB2 | CB3
-const coating: 1 | 1.2 | 1.3 | 1.35 = 1; // No Coating | Close Range | Bladescale Hone | Power
-const rawChargeLevel: 0.65 | 1 | 1.25 | 1.35 = 1.25;
-const motionValue = 0.09;
-const rawHitZone = 0.6;
+const critDamage: 0.75 | 1 | 1.25 | 1.3 | 1.35 | 1.4 = 1.4; // Negative Crit | No Crit | Normal Crit | CB1 | CB2 | CB3
+const coating: 1 | 1.2 | 1.3 | 1.35 = 1.3; // No Coating | Close Range | Bladescale Hone | Power
+const rawChargeLevel: 0.65 | 1 | 1.25 | 1.35 = 1.35;
+const motionValue = 0.1;
+const rawHitZone = 0.45;
 const antiSpecies = 1; // Still need to work this one out
-const shotTypeUp: 1 | 1.05 | 1.1 | 1.2 = 1;
+const shotTypeUp: 1 | 1.05 | 1.1 | 1.2 = 1.2;
 
-const rawDamage = Math.round(totalRaw * criticalRange * critDamage * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
+const rawDamageNoCrit = Math.round(totalRaw * criticalRange * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
+const rawDamageCrit = Math.round(totalRaw * criticalRange * (1 + (critDamage - 1)) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
+const rawDamageAverage = Math.round(totalRaw * criticalRange * (1 + (affinity * (critDamage - 1))) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
 
-console.log(`Raw Damage: ${rawDamage}`);
-
-const critElement: 1 | 1.05 | 1.1 | 1.15 = 1;
-const elementChargeLevel: 0.8 | 1 | 1.1 | 1.2 = 1.1; // Based on charge level
+const critElement: 1 | 1.05 | 1.1 | 1.15 = 1.1;
+const elementChargeLevel: 0.8 | 1 | 1.1 | 1.2 = 1.2; // Based on charge level
 const elementHitZone = 0.2;
-const elementExploit = 1; // Elembane and Element Exploit are additive
-let elementDamage = monsterHunterRound(totalElement * critElement * elementChargeLevel * elementHitZone * elementExploit);
+const elementExploit = 1.1; // Elembane and Element Exploit are additive
 
-console.log(`Elemental Damage: ${elementDamage}`);
+const elementDamageNoCrit = monsterHunterRound(totalElement * elementChargeLevel * elementHitZone * elementExploit);
+const elementDamageCrit = monsterHunterRound(totalElement * (1 + (critElement - 1)) * elementChargeLevel * elementHitZone * elementExploit);
+const elementDamageAverage = monsterHunterRound(totalElement * (1 + (affinity * (critElement - 1))) * elementChargeLevel * elementHitZone * elementExploit);
 
-const totalDamage = rawDamage + elementDamage;
-console.log(`Total Damage: ${totalDamage}`);
+const totalDamageNoCrit = rawDamageNoCrit + elementDamageNoCrit;
+const totalDamageCrit = rawDamageCrit + elementDamageCrit;
+const totalDamageAverage = rawDamageAverage + elementDamageAverage;
+
+console.log(`Total Raw: ${totalRaw}`);
+console.log(`Total Element: ${totalElement}`);
+
+console.log(`Raw Damage: No Crit: ${rawDamageNoCrit} | Crit: ${rawDamageCrit} | Average ${rawDamageAverage}`);
+console.log(`Elemental Damage: No Crit: ${elementDamageNoCrit} | Crit: ${elementDamageCrit} | Average ${elementDamageAverage}`);
+
+console.log(`Total Damage: No Crit: ${totalDamageNoCrit} | Crit: ${totalDamageCrit} | Average ${totalDamageAverage}`);
 
 // From what I can see, Monster Hunter rounding for elemental damage seems to ignore all decimal places except the first
 // and performs banker's rounding (so an exact .5 would round down instead of up).
