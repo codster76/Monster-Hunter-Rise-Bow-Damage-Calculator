@@ -1,0 +1,34 @@
+// Stats
+const baseRaw = 0;
+const rawMultiplier = 1;
+const flatAttack = 0;
+const totalRawBuffs = 1; // Hunting horn buffs to here
+const totalRaw = Math.floor(((baseRaw * rawMultiplier) + flatAttack) * totalRawBuffs + 0.1);
+
+const baseElement = 0;
+const elementMultiplier = 1; // Multiplicative with each other
+const flatElement = 0;
+const totalElementBuffs = 1; // Hunting horn buffs go here
+const totalElement = Math.floor(((baseElement * elementMultiplier) + flatElement) * totalElementBuffs + 0.1);
+
+let affinity = 0;
+affinity = Math.min(1, affinity/100);
+
+// Damage Calculations
+const criticalRange: 0.8 | 1 | 0.2 | 1.15 = 1; // Close | Normal | Far | Supercritical
+const critDamage: 0.75 | 1 | 1.25 | 1.3 | 1.35 | 1.4 = 1.25; // Negative Crit | No Crit | Normal Crit | CB1 | CB2 | CB3
+const coating: 1 | 1.2 | 1.3 | 1.35 = 1.2; // No Coating | Close Range | Bladescale Hone | Power
+const rawChargeLevel: 0.65 | 1 | 1.25 | 1.35 = 1.35;
+const motionValue = 0.12;
+const rawHitZone = 0.45;
+const antiSpecies = 1; // Still need to work this one out
+const shotTypeUp: 1 | 1.05 | 1.1 | 1.2 = 1;
+
+const rawDamageNoCrit = Math.round(totalRaw * criticalRange * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
+const rawDamageCrit = Math.round(totalRaw * criticalRange * (1 + (critDamage - 1)) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
+const rawDamageAverage = Math.round(totalRaw * criticalRange * (1 + (affinity * (critDamage - 1))) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
+
+const critElement: 1 | 1.05 | 1.1 | 1.15 = 1;
+const elementChargeLevel: 0.8 | 1 | 1.1 | 1.2 = 1.2; // Based on charge level
+const elementHitZone = 0.15;
+const elementExploit = 1; // Elembane and Element Exploit are additive

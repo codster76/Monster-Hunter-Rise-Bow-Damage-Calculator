@@ -1,0 +1,40 @@
+Expected: 108 / Calculated: 56.74536 + 50.820000000000014
+Expected: 172 / Calculated: 94.5756 + 76.23000000000002
+Expected: 104 / Calculated: 56.74536 + 47.0448
+Expected: 166 / Calculated: 94.5756 + 70.56720000000001
+Expected: 100 / Calculated: 58.106159999999996 + 41.593199999999996)
+Expected: 160 / Calculated: 96.8436 + 62.3898)
+Expected: 99 / Calculated: 54.023759999999996 + 44.629200000000004)
+Expected: 158 / Calculated: 90.0396 + 66.9438)
+Expected: 87 / Calculated: 53.343360000000004 + 33.6996)
+Expected: 140 / Calculated: 88.9056 + 50.5494)
+Expected: 112 / Calculated: 55.860354000000015 + 55.466400000000014
+Expected: 177 / Calculated: 93.10059000000003 + 83.1996
+Expected: 90 / Calculated: 59.468903999999995 + 30.492000000000008
+Expected: 145 / Calculated: 45.73800000000001 + 99.11484
+Expected: 103 / Calculated: 60.190614000000004 + 42.68880000000001
+Expected: 165 / Calculated: 100.31769000000001 + 64.03320000000001
+Expected: 101 / Calculated: 61.634034 + 39.204
+Expected: 162 / Calculated: 102.72339000000001 + 58.806
+Expected: 107 / Calculated: 60.190614000000004 + 47.0448
+Expected: 171 / Calculated: 100.31769000000001 + 70.56720000000001
+Expected: 31 / Calculated: 30.525 = 30.525 + 0
+Expected: 51 / Calculated: 50.875 = 50.875 + 0
+Expected: 38 / Calculated: 37.485 = 23.625 + 13.860000000000003
+Expected: 60 / Calculated: 60.165000000000006 = 39.375 + 20.790000000000003
+Expected: 33 / Calculated: 32.9 = 28.5 + 4.4
+Expected: 55 / Calculated: 54.1 = 47.5 + 6.6
+Expected: 34 / Calculated: 33.69 = 27.75 + 5.940000000000001
+Expected: 55 / Calculated: 55.16 = 46.25 + 8.91
+Expected: 31 / Calculated: 31.310000000000002 = 26.25 + 5.0600000000000005
+Expected: 52 / Calculated: 51.34 = 43.75 + 7.59
+Expected: 31 / Calculated: 31.134999999999998 = 24.974999999999998 + 6.160000000000001
+Expected: 51 / Calculated: 50.865 = 41.625 + 9.24
+Expected: 23 / Calculated: 23.4 = 23.4 + 0
+Expected: 39 / Calculated: 39 = 39 + 0
+Expected: 42 / Calculated: 41.695 = 24.974999999999998 + 16.720000000000002
+Expected: 67 / Calculated: 66.705 = 41.625 + 25.080000000000002
+Expected: 36 / Calculated: 35.660000000000004 = 24 + 11.660000000000002
+Expected: 57 / Calculated: 57.49 = 40 + 17.490000000000002
+Expected: 35 / Calculated: 34.65 = 34.65 + 0
+Expected: 58 / Calculated: 57.75 = 57.75 + 0

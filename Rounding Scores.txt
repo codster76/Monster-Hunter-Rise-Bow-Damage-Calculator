@@ -1,0 +1,125 @@
+none/none/none: 0
+none/none/ceiling: 0
+none/none/floor: 0
+none/none/normal: 0
+none/none/monster hunter: 0
+none/ceiling/none: 0
+none/ceiling/ceiling: 0.3
+none/ceiling/floor: 0.575
+none/ceiling/normal: 0.575
+none/ceiling/monster hunter: 0.575
+none/floor/none: 0
+none/floor/ceiling: 0.575
+none/floor/floor: 0.125
+none/floor/normal: 0.375
+none/floor/monster hunter: 0.375
+none/normal/none: 0
+none/normal/ceiling: 0.625
+none/normal/floor: 0.375
+none/normal/normal: 0.9
+none/normal/monster hunter: 0.875
+none/monster hunter/none: 0
+none/monster hunter/ceiling: 0.6
+none/monster hunter/floor: 0.325
+none/monster hunter/normal: 0.8
+none/monster hunter/monster hunter: 0.775
+ceiling/none/none: 0
+ceiling/none/ceiling: 0
+ceiling/none/floor: 0
+ceiling/none/normal: 0
+ceiling/none/monster hunter: 0
+ceiling/ceiling/none: 0
+ceiling/ceiling/ceiling: 0.075
+ceiling/ceiling/floor: 0.6
+ceiling/ceiling/normal: 0.4
+ceiling/ceiling/monster hunter: 0.425
+ceiling/floor/none: 0
+ceiling/floor/ceiling: 0.6
+ceiling/floor/floor: 0.325
+ceiling/floor/normal: 0.575
+ceiling/floor/monster hunter: 0.55
+ceiling/normal/none: 0
+ceiling/normal/ceiling: 0.3
+ceiling/normal/floor: 0.675
+ceiling/normal/normal: 0.85
+ceiling/normal/monster hunter: 0.875
+ceiling/monster hunter/none: 0
+ceiling/monster hunter/ceiling: 0.35
+ceiling/monster hunter/floor: 0.65
+ceiling/monster hunter/normal: 0.875
+ceiling/monster hunter/monster hunter: 0.9
+floor/none/none: 0.025
+floor/none/ceiling: 0.05
+floor/none/floor: 0.05
+floor/none/normal: 0.075
+floor/none/monster hunter: 0.075
+floor/ceiling/none: 0.125
+floor/ceiling/ceiling: 0.475
+floor/ceiling/floor: 0.575
+floor/ceiling/normal: 0.65
+floor/ceiling/monster hunter: 0.625
+floor/floor/none: 0.05
+floor/floor/ceiling: 0.5
+floor/floor/floor: 0.125
+floor/floor/normal: 0.35
+floor/floor/monster hunter: 0.3
+floor/normal/none: 0.15
+floor/normal/ceiling: 0.75
+floor/normal/floor: 0.375
+floor/normal/normal: 0.825
+floor/normal/monster hunter: 0.7
+floor/monster hunter/none: 0.125
+floor/monster hunter/ceiling: 0.675
+floor/monster hunter/floor: 0.325
+floor/monster hunter/normal: 0.725
+floor/monster hunter/monster hunter: 0.625
+normal/none/none: 0.025
+normal/none/ceiling: 0.05
+normal/none/floor: 0.05
+normal/none/normal: 0.075
+normal/none/monster hunter: 0.075
+normal/ceiling/none: 0.125
+normal/ceiling/ceiling: 0.45
+normal/ceiling/floor: 0.6
+normal/ceiling/normal: 0.65
+normal/ceiling/monster hunter: 0.625
+normal/floor/none: 0.05
+normal/floor/ceiling: 0.525
+normal/floor/floor: 0.125
+normal/floor/normal: 0.375
+normal/floor/monster hunter: 0.325
+normal/normal/none: 0.15
+normal/normal/ceiling: 0.775
+normal/normal/floor: 0.375
+normal/normal/normal: 0.875
+normal/normal/monster hunter: 0.75
+normal/monster hunter/none: 0.125
+normal/monster hunter/ceiling: 0.7
+normal/monster hunter/floor: 0.325
+normal/monster hunter/normal: 0.775
+normal/monster hunter/monster hunter: 0.675
+monster hunter/none/none: 0.025
+monster hunter/none/ceiling: 0.05
+monster hunter/none/floor: 0.05
+monster hunter/none/normal: 0.075
+monster hunter/none/monster hunter: 0.075
+monster hunter/ceiling/none: 0.125
+monster hunter/ceiling/ceiling: 0.45
+monster hunter/ceiling/floor: 0.6
+monster hunter/ceiling/normal: 0.65
+monster hunter/ceiling/monster hunter: 0.625
+monster hunter/floor/none: 0.05
+monster hunter/floor/ceiling: 0.525
+monster hunter/floor/floor: 0.125
+monster hunter/floor/normal: 0.375
+monster hunter/floor/monster hunter: 0.325
+monster hunter/normal/none: 0.15
+monster hunter/normal/ceiling: 0.775
+monster hunter/normal/floor: 0.375
+monster hunter/normal/normal: 0.875
+monster hunter/normal/monster hunter: 0.75
+monster hunter/monster hunter/none: 0.125
+monster hunter/monster hunter/ceiling: 0.7
+monster hunter/monster hunter/floor: 0.325
+monster hunter/monster hunter/normal: 0.775
+monster hunter/monster hunter/monster hunter: 0.675
