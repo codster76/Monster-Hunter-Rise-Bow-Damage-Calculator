@@ -1,58 +1,67 @@
 // Stats
-const baseRaw = 320;
+const baseRaw = 350;
 const rawMultiplier = 1;
-const flatAttack = 20;
+const flatAttack = 20 + 3;
 const totalRawBuffs = 1; // Hunting horn buffs to here
 const totalRaw = Math.floor(((baseRaw * rawMultiplier) + flatAttack) * totalRawBuffs + 0.1);
 
-const baseElement = 0;
+const dragonConversion: 0 | 0.04 | 0.08 = 0.08; // None | DC1, DC2 | DC3 
+const dragonConversionBuff: 0 | 50 | 75 = 75;
+
+const fireRes = 19;
+const waterRes = 27;
+const thunderRes = 13;
+const iceRes = 13;
+const dragonRes = 2;
+
+const dragonConversionElement = dragonConversionRound((fireRes + waterRes + thunderRes + iceRes + dragonRes + dragonConversionBuff) * dragonConversion);
+
+const baseElement = 77;
 const elementMultiplier = 1; // Multiplicative with each other
 const flatElement = 0;
 const totalElementBuffs = 1; // Hunting horn buffs go here
-const totalElement = Math.floor(((baseElement * elementMultiplier) + flatElement) * totalElementBuffs + 0.1);
+const totalElement = Math.floor(((baseElement * elementMultiplier) + flatElement + dragonConversionElement) * totalElementBuffs + 0.1);
 
 let affinity = 0;
 affinity = Math.min(1, affinity/100);
 
 // Damage Calculations
+const frostcraft: 1 | 1.05 | 1.2 | 1.25 = 1;
+
 const criticalRange: 0.8 | 1 | 0.2 | 1.15 = 1; // Close | Normal | Far | Supercritical
-const critDamage: 0.75 | 1.25 | 1.3 | 1.35 | 1.4 = 1.25; // Negative Crit | Normal Crit | CB1 | CB2 | CB3
+const critDamage: 0.75 | 1.25 | 1.3 | 1.35 | 1.4 = 1.35; // Negative Crit | Normal Crit | CB1 | CB2 | CB3
 const coating: 1 | 1.2 | 1.3 | 1.35 = 1; // No Coating | Close Range | Bladescale Hone | Power
 const rawChargeLevel: 0.65 | 1 | 1.25 | 1.35 = 1.25;
-const motionValue = 0.12;
-const rawHitZone = 1;
+const motionValue = 0.09;
+const rawHitZone = 0.6;
 const antiSpecies = 1; // Still need to work this one out
 const shotTypeUp: 1 | 1.05 | 1.1 | 1.2 = 1;
 
-// const rawDamageNoCrit = Math.round(totalRaw * criticalRange * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
-// const rawDamageCrit = Math.round(totalRaw * criticalRange * (1 + (critDamage - 1)) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
-// const rawDamageAverage = Math.round(totalRaw * criticalRange * (1 + (affinity * (critDamage - 1))) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
-
-const rawDamageNoCrit = totalRaw * criticalRange * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp;
-const rawDamageCrit = totalRaw * criticalRange * (1 + (critDamage - 1)) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp;
-const rawDamageAverage = totalRaw * criticalRange * (1 + (affinity * (critDamage - 1))) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp;
+const rawDamageNoCrit = monsterHunterRound(totalRaw * criticalRange * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp * frostcraft);
+const rawDamageCrit = monsterHunterRound(totalRaw * criticalRange * (1 + (critDamage - 1)) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp * frostcraft);
+const rawDamageAverage = monsterHunterRound(totalRaw * criticalRange * (1 + (affinity * (critDamage - 1))) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp * frostcraft);
 
 
 const critElement: 1 | 1.05 | 1.1 | 1.15 = 1;
 const elementChargeLevel: 0.8 | 1 | 1.1 | 1.2 = 1.1; // Based on charge level
-const elementHitZone = 0.3;
+const elementHitZone = 0.2;
 const elementExploit = 1; // Elembane and Element Exploit are additive
 
-const elementDamageNoCrit = monsterHunterRound(totalElement * elementChargeLevel * elementHitZone * elementExploit);
-const elementDamageCrit = monsterHunterRound(totalElement * (1 + (critElement - 1)) * elementChargeLevel * elementHitZone * elementExploit);
-const elementDamageAverage = monsterHunterRound(totalElement * (1 + (affinity * (critElement - 1))) * elementChargeLevel * elementHitZone * elementExploit);
+const elementDamageNoCrit = monsterHunterRound(totalElement * elementChargeLevel * elementHitZone * elementExploit * frostcraft);
+const elementDamageCrit = monsterHunterRound(totalElement * (1 + (critElement - 1)) * elementChargeLevel * elementHitZone * elementExploit * frostcraft);
+const elementDamageAverage = monsterHunterRound(totalElement * (1 + (affinity * (critElement - 1))) * elementChargeLevel * elementHitZone * elementExploit * frostcraft);
 
 const totalDamageNoCrit = rawDamageNoCrit + elementDamageNoCrit;
 const totalDamageCrit = rawDamageCrit + elementDamageCrit;
 const totalDamageAverage = rawDamageAverage + elementDamageAverage;
 
-// console.log(`Total Raw: ${totalRaw}`);
-// console.log(`Total Element: ${totalElement}`);
+console.log(`Total Raw: ${totalRaw}`);
+console.log(`Total Element: ${totalElement}`);
 
-// console.log(`Raw Damage: No Crit: ${rawDamageNoCrit} | Crit: ${rawDamageCrit} | Average ${rawDamageAverage}`);
-// console.log(`Elemental Damage: No Crit: ${elementDamageNoCrit} | Crit: ${elementDamageCrit} | Average ${elementDamageAverage}`);
+console.log(`Raw Damage: No Crit: ${rawDamageNoCrit} | Crit: ${rawDamageCrit} | Average ${rawDamageAverage}`);
+console.log(`Elemental Damage: No Crit: ${elementDamageNoCrit} | Crit: ${elementDamageCrit} | Average ${elementDamageAverage}`);
 
-// console.log(`Total Damage: No Crit: ${totalDamageNoCrit} | Crit: ${totalDamageCrit} | Average ${totalDamageAverage}`);
+console.log(`Total Damage: No Crit: ${totalDamageNoCrit} | Crit: ${totalDamageCrit} | Average ${totalDamageAverage}`);
 
 function customRound(numberToRound: number, type: "none" | "ceiling" | "floor" | "normal" | "monster hunter") {
     if(type === "none") {
@@ -140,6 +149,28 @@ function monsterHunterRound(numToRound: number): number {
     try {
         let splitNumber = numToRound.toString().split(".");
         if(+splitNumber[1].substring(0,1) <= 5) {
+            return +splitNumber[0];
+        } else {
+            return +splitNumber[0] + numToRound/Math.abs(numToRound);
+        }
+    } catch(error) {
+        // I tried to use string.includes to find a ".", but my compiler refuses to cooperate for some reason.
+        // This is a workaround until I can get includes working again.
+        if(error instanceof TypeError) {
+            return numToRound;
+        } else {
+            throw error;
+        }
+    }
+}
+
+function dragonConversionRound(numToRound: number): number {
+    // if(numToRound.toString().includes(".")) {
+        // return numToRound;
+    // }
+    try {
+        let splitNumber = numToRound.toString().split(".");
+        if(+splitNumber[1].substring(0,1) < 9) {
             return +splitNumber[0];
         } else {
             return +splitNumber[0] + numToRound/Math.abs(numToRound);
@@ -834,7 +865,7 @@ function functionCalls() {
     console.log(`${counter/40}`);
 }
 
-functionCalls();
+// functionCalls();
 
 interface BowInfo {
     Name: string;

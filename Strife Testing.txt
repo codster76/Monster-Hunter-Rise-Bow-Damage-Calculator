@@ -1,0 +1,44 @@
+Stife 3
+>60%
+Body
+Expected: 55 (68)	Calculated: 55 (68)
+Head
+Expected: 88 (109)	Calculated: 89 (109)
+
+<60% (without coalescence because it's fucking annoying to maintain for long enough)
+Body
+Expected: 52 (64)	Calculated: 52 (64)
+Head
+Expected: 83 (102)	Calculated: 84 (103)
+
+<60% (with coalescence)
+Body
+Expected: 57 (64)	Calculated: 54 (67)
+Head
+Expected: 87 (108)	Calculated: 88 (108)
+
+Strife 2
+>60%
+Body
+Expected: 52 (65)	Calculated: 52 (65)
+Head
+Expected: 84 (105)	Calculated: 85 (105)
+
+<60% (with coalescence)
+Body
+Expected: 51 (64)	Calculated: 52 (65)
+Head
+Expected: 83 (104)	Calculated: 84 (104)
+
+Strife 1
+>60%
+Body
+Expected: 50 (62)	Calculated: 50 (62)
+Head
+Expected: 81 (101)	Calculated: 81 (101)
+
+<60% (with coalescence)
+Body
+Expected: 49 (61)	Calculated: 49 (61)
+Head
+Expected: 80 (100)	Calculated: 80 (100)

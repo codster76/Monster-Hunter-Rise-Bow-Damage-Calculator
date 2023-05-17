@@ -1,0 +1,169 @@
+360 Raw, No Element, Rapid 5, Charge Level 3, No Crit, AB7
+Body
+Expected: In-game test	Tested: result if frostcraft is a stat multiplier (result if frostcraft is a total stat multiplier)
+Head
+Expected: In-game test	Tested: result if frostcraft is a stat multiplier (result if frostcraft is a total stat multiplier)
+
+Without Frostcraft
+Body
+Expected: 35	Tested: 35
+Head
+Expected: 59	Tested: 59
+
+Frostcraft 1
+Body
+Expected: 37	Tested: 37 (37)
+Head
+Expected: 62	Tested: 61 (62)
+
+Frostcraft 2
+Body
+Expected: 42	Tested: 42 (42)
+Head
+Expected: 70	Tested: 69 (70)
+
+Frostcraft 3
+Body
+Expected: 44	Tested: 43 (44)
+Head
+Expected: 73	Tested: 72 (73)
+
+360 Raw, 57 Element, Rapid 5, Charge Level 3, No Crit, AB7
+
+If frostcraft is a total damage multiplier after crits
+
+Without frostcraft
+Body
+Expected: 47	Tested: 48
+Head
+Expected: 78	Tested: 78
+
+Frostcraft 1
+Body
+Expected: 50	Tested: 50.400000000000006
+Head
+Expected: 82	Tested: 81.9
+
+Frostcraft 2
+Body
+Expected: 57	Tested: 57.599999999999994
+Head
+Expected: 92	Tested: 93.6
+
+Frostcraft 3
+Body
+Expected: 60	Tested: 60
+Head
+Expected: 96	Tested: 97.5
+
+If frostcraft is an raw/element stat multiplier
+
+Without frostcraft
+Body
+Expected: 47	Tested: 48
+Head
+Expected: 78	Tested: 78
+
+Frostcraft 1
+Body
+Expected: 50	Tested: 50
+Head
+Expected: 82	Tested: 82
+
+Frostcraft 2
+Body
+Expected: 57	Tested: 57
+Head
+Expected: 92	Tested: 93
+
+Frostcraft 3
+Body
+Expected: 60	Tested: 60
+Head
+Expected: 96	Tested: 97
+
+If frostcraft is an raw/element damage multiplier
+Body
+Expected: In-game test (crit)	Tested: calculator result (crit)
+Head
+Expected: In-game test (crit)	Tested: calculator result (crit)
+
+Without frostcraft
+Body
+Expected: 47		Tested: 48
+Head
+Expected: 78		Tested: 78
+
+Frostcraft 1
+Body
+Expected: 50 (59)	Tested: 50 (59)
+Head
+Expected: 82 (97)	Tested: 82 (97)
+
+Frostcraft 2
+Body
+Expected: 57 (68)	Tested: 57 (68)
+Head
+Expected: 92 (110)	Tested: 93 (111)
+
+Frostcraft 3
+Body
+Expected: 60 (71)	Tested: 60 (71)
+Head
+Expected: 96 (115)	Tested: 97 (116)
+
+360 Raw, 57 Element, Rapid 5, Charge Level 3, AB7, Ice5
+Body
+Expected: In-game test (crit)	Tested: calculator result (crit)
+Head
+Expected: In-game test (crit)	Tested: calculator result (crit)
+
+Total Damage Multiplier
+Without frostcraft
+Body
+Expected: 51 (60)	Tested: 51 (60)
+Head
+Expected: 83 (97)	Tested: 83 (97)
+
+Frostcraft 1
+Body
+Expected: 54 (63)	Tested: 54 (63)
+Head
+Expected: 87 (102)	Tested: 87 (102)
+
+Frostcraft 2
+Body
+Expected: 61 (72)	Tested: 61 (72)
+Head
+Expected: 98 (116)	Tested: 99 (117)
+
+Frostcraft 3
+Body
+Expected: 64 (75)	Tested: 64 (75)
+Head
+Expected: 103 (122)	Tested: 103 (122)
+
+Stat Multiplier
+Without frostcraft
+Body
+Expected: 51 (60)	Tested: 
+Head
+Expected: 83 (97)	Tested: 
+
+Frostcraft 1
+Body
+Expected: 54 (63)	Tested: 
+Head
+Expected: 87 (102)	Tested: 
+
+Frostcraft 2
+Body
+Expected: 61 (72)	Tested: 
+Head
+Expected: 98 (116)	Tested: 
+
+Frostcraft 3
+Body
+Expected: 64 (75)	Tested: 
+Head
+Expected: 103 (122)	Tested: 

@@ -1,46 +1,52 @@
 // Stats
-var baseRaw = 320;
+var baseRaw = 350;
 var rawMultiplier = 1;
-var flatAttack = 20;
+var flatAttack = 20 + 3;
 var totalRawBuffs = 1; // Hunting horn buffs to here
 var totalRaw = Math.floor(((baseRaw * rawMultiplier) + flatAttack) * totalRawBuffs + 0.1);
-var baseElement = 0;
+var dragonConversion = 0.08; // None | DC1, DC2 | DC3 
+var dragonConversionBuff = 75;
+var fireRes = 19;
+var waterRes = 27;
+var thunderRes = 13;
+var iceRes = 13;
+var dragonRes = 2;
+var dragonConversionElement = dragonConversionRound((fireRes + waterRes + thunderRes + iceRes + dragonRes + dragonConversionBuff) * dragonConversion);
+var baseElement = 77;
 var elementMultiplier = 1; // Multiplicative with each other
 var flatElement = 0;
 var totalElementBuffs = 1; // Hunting horn buffs go here
-var totalElement = Math.floor(((baseElement * elementMultiplier) + flatElement) * totalElementBuffs + 0.1);
+var totalElement = Math.floor(((baseElement * elementMultiplier) + flatElement + dragonConversionElement) * totalElementBuffs + 0.1);
 var affinity = 0;
 affinity = Math.min(1, affinity / 100);
 // Damage Calculations
+var frostcraft = 1;
 var criticalRange = 1; // Close | Normal | Far | Supercritical
-var critDamage = 1.25; // Negative Crit | Normal Crit | CB1 | CB2 | CB3
+var critDamage = 1.35; // Negative Crit | Normal Crit | CB1 | CB2 | CB3
 var coating = 1; // No Coating | Close Range | Bladescale Hone | Power
 var rawChargeLevel = 1.25;
-var motionValue = 0.12;
-var rawHitZone = 1;
+var motionValue = 0.09;
+var rawHitZone = 0.6;
 var antiSpecies = 1; // Still need to work this one out
 var shotTypeUp = 1;
-// const rawDamageNoCrit = Math.round(totalRaw * criticalRange * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
-// const rawDamageCrit = Math.round(totalRaw * criticalRange * (1 + (critDamage - 1)) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
-// const rawDamageAverage = Math.round(totalRaw * criticalRange * (1 + (affinity * (critDamage - 1))) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp);
-var rawDamageNoCrit = totalRaw * criticalRange * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp;
-var rawDamageCrit = totalRaw * criticalRange * (1 + (critDamage - 1)) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp;
-var rawDamageAverage = totalRaw * criticalRange * (1 + (affinity * (critDamage - 1))) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp;
+var rawDamageNoCrit = monsterHunterRound(totalRaw * criticalRange * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp * frostcraft);
+var rawDamageCrit = monsterHunterRound(totalRaw * criticalRange * (1 + (critDamage - 1)) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp * frostcraft);
+var rawDamageAverage = monsterHunterRound(totalRaw * criticalRange * (1 + (affinity * (critDamage - 1))) * coating * rawChargeLevel * motionValue * rawHitZone * antiSpecies * shotTypeUp * frostcraft);
 var critElement = 1;
 var elementChargeLevel = 1.1; // Based on charge level
-var elementHitZone = 0.3;
+var elementHitZone = 0.2;
 var elementExploit = 1; // Elembane and Element Exploit are additive
-var elementDamageNoCrit = monsterHunterRound(totalElement * elementChargeLevel * elementHitZone * elementExploit);
-var elementDamageCrit = monsterHunterRound(totalElement * (1 + (critElement - 1)) * elementChargeLevel * elementHitZone * elementExploit);
-var elementDamageAverage = monsterHunterRound(totalElement * (1 + (affinity * (critElement - 1))) * elementChargeLevel * elementHitZone * elementExploit);
+var elementDamageNoCrit = monsterHunterRound(totalElement * elementChargeLevel * elementHitZone * elementExploit * frostcraft);
+var elementDamageCrit = monsterHunterRound(totalElement * (1 + (critElement - 1)) * elementChargeLevel * elementHitZone * elementExploit * frostcraft);
+var elementDamageAverage = monsterHunterRound(totalElement * (1 + (affinity * (critElement - 1))) * elementChargeLevel * elementHitZone * elementExploit * frostcraft);
 var totalDamageNoCrit = rawDamageNoCrit + elementDamageNoCrit;
 var totalDamageCrit = rawDamageCrit + elementDamageCrit;
 var totalDamageAverage = rawDamageAverage + elementDamageAverage;
-// console.log(`Total Raw: ${totalRaw}`);
-// console.log(`Total Element: ${totalElement}`);
-// console.log(`Raw Damage: No Crit: ${rawDamageNoCrit} | Crit: ${rawDamageCrit} | Average ${rawDamageAverage}`);
-// console.log(`Elemental Damage: No Crit: ${elementDamageNoCrit} | Crit: ${elementDamageCrit} | Average ${elementDamageAverage}`);
-// console.log(`Total Damage: No Crit: ${totalDamageNoCrit} | Crit: ${totalDamageCrit} | Average ${totalDamageAverage}`);
+console.log("Total Raw: ".concat(totalRaw));
+console.log("Total Element: ".concat(totalElement));
+console.log("Raw Damage: No Crit: ".concat(rawDamageNoCrit, " | Crit: ").concat(rawDamageCrit, " | Average ").concat(rawDamageAverage));
+console.log("Elemental Damage: No Crit: ".concat(elementDamageNoCrit, " | Crit: ").concat(elementDamageCrit, " | Average ").concat(elementDamageAverage));
+console.log("Total Damage: No Crit: ".concat(totalDamageNoCrit, " | Crit: ").concat(totalDamageCrit, " | Average ").concat(totalDamageAverage));
 function customRound(numberToRound, type) {
     if (type === "none") {
         return numberToRound;
@@ -60,8 +66,8 @@ function customRound(numberToRound, type) {
 }
 function calculateStats(baseRaw, rawMultiplier, flatAttack, totalRawBuffs, affinity, baseElement, elementMultiplier, flatElement, totalElementBuffs, roundType) {
     return {
-        "Raw": customRound((((baseRaw * rawMultiplier) + flatAttack) * totalRawBuffs), roundType),
-        "Element": customRound((((baseElement * elementMultiplier) + flatElement) * totalElementBuffs), roundType),
+        "Raw": customRound((((baseRaw * rawMultiplier) + flatAttack) * totalRawBuffs + 0.1), roundType),
+        "Element": customRound((((baseElement * elementMultiplier) + flatElement) * totalElementBuffs + 0.1), roundType),
         "Affinity": Math.min(1, affinity / 100)
     };
 }
@@ -94,6 +100,30 @@ function monsterHunterRound(numToRound) {
     try {
         var splitNumber = numToRound.toString().split(".");
         if (+splitNumber[1].substring(0, 1) <= 5) {
+            return +splitNumber[0];
+        }
+        else {
+            return +splitNumber[0] + numToRound / Math.abs(numToRound);
+        }
+    }
+    catch (error) {
+        // I tried to use string.includes to find a ".", but my compiler refuses to cooperate for some reason.
+        // This is a workaround until I can get includes working again.
+        if (error instanceof TypeError) {
+            return numToRound;
+        }
+        else {
+            throw error;
+        }
+    }
+}
+function dragonConversionRound(numToRound) {
+    // if(numToRound.toString().includes(".")) {
+    // return numToRound;
+    // }
+    try {
+        var splitNumber = numToRound.toString().split(".");
+        if (+splitNumber[1].substring(0, 1) < 9) {
             return +splitNumber[0];
         }
         else {
@@ -653,4 +683,3 @@ function functionCalls() {
     }
     console.log("".concat(counter / 40));
 }
-functionCalls();
